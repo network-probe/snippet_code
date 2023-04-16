@@ -6,8 +6,8 @@ template<typename L1, typename L2>
 struct S : L1, L2 {
     S(L1 l1, L2 l2) : L1(std::move(l1)), L2(std::move(l2)) {}
 
-    // using L1::operator();
-    // using L2::operator();
+    using L1::operator();
+    using L2::operator();
 
     int operator()() {
         return 18;
@@ -31,9 +31,9 @@ int main() {
     auto combined_c17 = S(l1, l2);
 
     std::cout << combined_c11() << '\n';
-    // std::cout << combined_c11(4) << '\n';
+    std::cout << combined_c11(4) << '\n';
 
     std::cout << combined_c17() << '\n';
-    // std::cout << combined_c17(4) << '\n';    
+    std::cout << combined_c17(4) << '\n';    
 }
 
